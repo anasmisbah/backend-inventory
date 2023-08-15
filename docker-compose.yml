@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/app
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor123
+      - MYSQL_DATABASE=inventory
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_PORT=3306
+      - MYSQL_ROOT_PASSWORD:toor123
