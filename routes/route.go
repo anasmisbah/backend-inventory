@@ -17,6 +17,12 @@ func InitRoute(e *echo.Echo)  {
 	e.GET("/products",controllers.GetProductsController)
 	e.PUT("/products/:id",controllers.UpdateProductController)
 	e.DELETE("/products/:id",controllers.DeleteProductController)
+
+	e.POST("/stocks",controllers.AddStockController)
+	e.GET("/stocks/:id",controllers.GetDetailStockController)
+	e.GET("/stocks",controllers.GetStocksController)
+	e.PUT("/stocks/:id",controllers.UpdateStockController)
+	e.DELETE("/stocks/:id",controllers.DeleteStockController)
 }
 
 type CustomValidator struct {
