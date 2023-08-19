@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/anasmisbah/backend-inventory/config"
+	"github.com/anasmisbah/backend-inventory/routes"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
@@ -13,6 +14,7 @@ func main() {
 	loadEnv()
 	config.InitDB()
 	e := echo.New()
+	routes.InitRoute(e)
 	e.Logger.Fatal(e.Start(getPort()))
 }
 
