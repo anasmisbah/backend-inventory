@@ -1,8 +1,8 @@
 package models
 
 type Stock struct {
-	Id 			uint		`json:"id"`
-	Amount 		int64		`json:"amount"`
-	UpdatedAt 	string		`json:"updated_at"`
-	ProductId 	int64		
+	Id 			uint		`gorm:"primaryKey" form:"id"`
+	Amount 		int64		`form:"amount" validate:"required"`
+	UpdatedAt 	int			`gorm:"autoUpdateTime"` 
+	ProductId 	int64		`form:"product_id" validate:"required"`
 }
