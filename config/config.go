@@ -3,6 +3,8 @@ package config
 import (
 	"fmt"
 	"os"
+
+	"github.com/anasmisbah/backend-inventory/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,4 +25,9 @@ func InitDB()  {
 	if e!=nil {
 		panic(e)
 	}
+	initMiggration()
+}
+
+func initMiggration()  {
+	DB.AutoMigrate(&models.Product{},&models.Stock{})
 }
