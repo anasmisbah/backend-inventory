@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	loadEnv()
+	// loadEnv()
 	config.InitDB()
 	e := echo.New()
 	routes.InitRoute(e)
