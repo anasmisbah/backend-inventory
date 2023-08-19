@@ -83,7 +83,8 @@ func GetStocksController(c echo.Context) error {
 }
 
 func UpdateStockController(c echo.Context) error {
-	var product models.Stock
+	id,_ := strconv.Atoi(c.Param("id"))
+	var product models.Stock = models.Stock{Id: uint(id)}
 	result := config.DB.First(&product)
 	if result.Error != nil {
 		return c.JSON(http.StatusNotFound,models.BaseResponse{
