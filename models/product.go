@@ -1,8 +1,8 @@
 package models
 
 type Product struct {
-	Id uint			`json:"id"`
-	Name string		`json:"name"`
-	Photo string	`json:"photo"`
-	Price int64		`json:"price"`
+	Id uint			`gorm:"primaryKey" form:"id"`
+	Name string		`form:"name" validate:"required"`
+	Photo string	`form:"photo" validate:"required"`
+	Price int64		`form:"price" validate:"required"`
 }
