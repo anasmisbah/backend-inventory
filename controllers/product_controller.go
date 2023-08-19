@@ -33,7 +33,7 @@ func AddProductController(c echo.Context) error {
 func GetDetailProductController(c echo.Context) error {
 	id,_ := strconv.Atoi(c.Param("id"))
 	var product models.Product = models.Product{Id: uint(id)}
-	result := config.DB.First(&product)
+	result := config.DB.Model(&models.Product{}).Preload("Stock").First(&product)
 	if result.Error != nil {
 		return c.JSON(http.StatusNotFound,models.BaseResponse{
 			Status: false,
@@ -67,7 +67,7 @@ func DeleteProductController(c echo.Context) error {
 }
 func GetProductsController(c echo.Context) error {
 	var products []models.Product
-	result := config.DB.Find(&products)
+	result := config.DB.Model(&models.Product{}).Preload("Stock").Find(&products)
 	if result.Error != nil {
 		return c.JSON(http.StatusNotFound,models.BaseResponse{
 			Status: false,
